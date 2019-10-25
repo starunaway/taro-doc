@@ -1,6 +1,11 @@
-# doc
+# Readme
 
-## init
+[Taro 官方文档](https://nervjs.github.io/taro/docs/taroize.html)  
+[微信小程序 官方文档](https://developers.weixin.qq.com/miniprogram/dev/framework/)
+
+## Taro CLI
+
+### init
 
 ```bash
 # 使用 npm 安装 CLI
@@ -13,7 +18,7 @@ $ yarn global add @tarojs/cli
 $ taro init myApp
 ```
 
-## taro 版本更新
+### taro 版本更新
 
 ```bash
 # taro
@@ -23,6 +28,27 @@ npm i -g @tarojs/cli@latest
 # yarn
 yarn global add @tarojs/cli@latest
 ```
+
+### 更新项目中 Taro 相关的依赖
+
+```bash
+$ taro update project
+```
+
+### Issue
+
+1. 回到某个版本后
+
+```bash
+  # 使用 npm 安装 CLI
+  $ npm install -g @tarojs/cli@1.3.9
+  # OR 使用 yarn 安装 CLI
+  $ yarn global add @tarojs/cli@1.3.9
+  # OR 安装了 cnpm，使用 cnpm 安装 CLI
+  $ cnpm install -g @tarojs/cli@1.3.9
+```
+
+使用 `taro update project` 并不能回退项目里面的 taro 版本
 
 ## 项目目录
 
@@ -181,7 +207,13 @@ export default class Index extends Component {
    }
    ```
 
-## issuers
+## 原生代码混写
+
+> 需要将原生的页面、组件代码放入 src 目录下，随后在 入口文件 app.js 中定义好 pages 配置指向对应的原生的页面
+
+实际上还需要在 app.js 中添加 build 参数的命令才能生效(现有的两个页面是直接复制一份代码到目录中)。
+
+## Issues
 
 1. 微信不支持修改光标颜色，在 iphone Android 和微信开发者工具中表现不一致
 
@@ -189,6 +221,6 @@ export default class Index extends Component {
 
 1. 微信开发者工具 使用 webview 打开业务域名，会提示找不到 appId，但在手机上是好的
 
-1. wxss 使用的尺寸单位是 rpx，将屏幕宽度恒定划为 750rpx;使用 rpx 进行适配
+1. wxss 使用的尺寸单位是 rpx，将屏幕宽度恒定划为 750rpx; 使用 rpx 进行适配
 
-1. 业务域名和服务域名不一样，都只能配置 https 或 wss,webview 打开页面及 webview 页面调用的服务都需要配置到业务域名中，需要在域名根目录下添加微信的校验文件
+1. 业务域名和服务域名不一样，都只能配置 https 或 wss。使用 webview 打开页面及 webview 页面调用的服务都需要配置到业务域名中，需要在域名根目录下添加微信的校验文件
